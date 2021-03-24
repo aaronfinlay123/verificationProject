@@ -709,11 +709,11 @@ public class FinlayAaronTestTask3
     //Task 3, new spec edition
 
     //TEST 14 Passes now that the appropiate IReductionRate + StudentRate classes are setup
-    //Furthermore this required changes to be made in the Rate class
+    //Furthermore this required changes to be made in the Rate class - via switch statements and a cost var being rounded equivalent to each carPark
     //STEP BY STEP:
     //Wrote test, ran test, test failed, made changes to Rate, created StudentRate
     //Re-ran tests, failed, made change to test (rRate > nRate) now: (rRate < nRate)
-    //Tests now pass
+    //Ran the tests again. Test now passes
     @org.junit.Test
     public void calculateTestFourteen() throws IllegalArgumentException
     {
@@ -737,7 +737,7 @@ public class FinlayAaronTestTask3
         CarParkKind carPark = CarParkKind.STUDENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
         BigDecimal expectedValue = new BigDecimal(5.5);
-        assertNotEquals(expectedValue, rate.calculate(new Period(8, 9)));
+        Assert.assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
     //
     }
@@ -770,7 +770,7 @@ public class FinlayAaronTestTask3
         //
     }
 
-    //TEST 15 -> Above 5.50 - STUDENT
+    //TEST 16 -> Above 5.50 - STUDENT
     // 5.50 + 4.50 reduced by 25% -> 1/4 (4.50) == 10.00 - 1.125 = 8.875
     @org.junit.Test
     public void calculateTestSixteen() throws IllegalArgumentException
@@ -794,8 +794,8 @@ public class FinlayAaronTestTask3
         //Car Park Kind
         CarParkKind carPark = CarParkKind.STUDENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal expectedValue = new BigDecimal(9);
-        assertNotEquals(expectedValue, rate.calculate(new Period(8, 9)));
+        BigDecimal expectedValue = new BigDecimal(8.875);
+        assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
         //
     }
