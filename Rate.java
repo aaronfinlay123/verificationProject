@@ -112,6 +112,13 @@ public class Rate {
                 cost = reduce.reduction(cost).setScale(roundingValue);
                 break;
             case VISITOR:
+                reduce = (IReductionRates) new VisitorRate();
+                cost = reduce.reduction(cost).setScale(roundingValue);
+                break;
+            case MANAGEMENT:
+                reduce = new ManagementRate();
+                cost = reduce.reduction(cost).setScale(roundingValue);
+                break;
                 //reduce = new VisitorRate()
 
         }
