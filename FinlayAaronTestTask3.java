@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotEquals;
 
 public class FinlayAaronTestTask3
 {
-/*
+
     //Rate Class Test Case #1
     @org.junit.Test(expected = IllegalArgumentException.class)
     public void testCaseOne() throws IllegalArgumentException {
@@ -702,7 +702,7 @@ public class FinlayAaronTestTask3
         BigDecimal expectedValue = new BigDecimal(36);
         assertNotEquals(expectedValue, rate.calculate(new Period(8, 12)));
     }
-   */
+
 
     //Prev Test Cases from Task2
     //Below is new Test Cases for Task 3
@@ -740,5 +740,63 @@ public class FinlayAaronTestTask3
         assertNotEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
     //
+    }
+    //TEST 15 -> Below 5.50 - STUDENT
+    @org.junit.Test
+    public void calculateTestFifteen() throws IllegalArgumentException
+    {
+        Rate rate;
+
+        //normalRate + reducedRate instances
+        BigDecimal normalRate = new BigDecimal(3);
+        BigDecimal reducedRate = new BigDecimal(2);
+
+        //Normal Periods
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period normPeriod = new Period (8, 15);
+        normalPeriods.add(normPeriod);
+
+        //Reduced Periods
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period reducedP = new Period(16, 18);
+        reducedPeriods.add(reducedP);
+
+        //Car Park Kind
+        CarParkKind carPark = CarParkKind.STUDENT;
+        rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        BigDecimal expectedValue = new BigDecimal(3);
+        assertNotEquals(expectedValue, rate.calculate(new Period(8, 9)));
+
+        //
+    }
+
+    //TEST 15 -> Above 5.50 - STUDENT
+    // 5.50 + 4.50 reduced by 25% -> 1/4 (4.50) == 10.00 - 1.125 = 8.875
+    @org.junit.Test
+    public void calculateTestSixteen() throws IllegalArgumentException
+    {
+        Rate rate;
+
+        //normalRate + reducedRate instances
+        BigDecimal normalRate = new BigDecimal(10);
+        BigDecimal reducedRate = new BigDecimal(2);
+
+        //Normal Periods
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period normPeriod = new Period (8, 15);
+        normalPeriods.add(normPeriod);
+
+        //Reduced Periods
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period reducedP = new Period(16, 18);
+        reducedPeriods.add(reducedP);
+
+        //Car Park Kind
+        CarParkKind carPark = CarParkKind.STUDENT;
+        rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        BigDecimal expectedValue = new BigDecimal(9);
+        assertNotEquals(expectedValue, rate.calculate(new Period(8, 9)));
+
+        //
     }
 }

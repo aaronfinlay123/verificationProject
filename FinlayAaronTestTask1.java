@@ -97,7 +97,7 @@ public class FinlayAaronTestTask1
     }
     // Rate Test Case #4
     @org.junit.Test(expected = IllegalArgumentException.class)
-        public void testCaseFour() throws IllegalArgumentException
+    public void testCaseFour() throws IllegalArgumentException
     {
         Rate rate;
         //Rate Variations
