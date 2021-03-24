@@ -120,7 +120,10 @@ public class Rate {
                 cost = reduce.reduction(cost).setScale(roundingValue);
                 break;
                 //reduce = new VisitorRate()
-
+            case STAFF:
+                reduce = new StaffRate();
+                cost = reduce.reduction(cost).setScale(roundingValue);
+                break;
         }
         return cost;
 //

@@ -7,7 +7,7 @@ class VisitorRate implements IReductionRates
     @Override
     public BigDecimal reduction(BigDecimal cost) {
         BigDecimal visitorFreeAmt = new BigDecimal("8");
-        BigDecimal visitorRedAmt = nesw BigDecimal("0.50");
+        BigDecimal visitorRedAmt = new BigDecimal("0.50");
         if (cost.compareTo(visitorFreeAmt) == -1)
         {
             return BigDecimal.ZERO;
