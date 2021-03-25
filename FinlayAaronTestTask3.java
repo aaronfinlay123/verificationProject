@@ -3,8 +3,8 @@ package cm;
 //DUE DATE: 26/03/21
 //Author: Aaron Finlay
 // 4th Year Soft Eng
-// 21 Rate Constructor tests
-// 14 Calculate Method tests
+// 19 Rate Constructor tests
+// 19 Calculate Method tests
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
@@ -16,10 +16,8 @@ import static org.junit.Assert.assertNotEquals;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import static java.math.BigDecimal.valueOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+
+
 
 public class FinlayAaronTestTask3
 {
@@ -87,7 +85,7 @@ public class FinlayAaronTestTask3
 
 
     ////Rate Class Test Case #4
-    @org.junit.Test(expected = IllegalArgumentException.class)
+    @org.junit.Test
     public void testCaseFour() throws IllegalArgumentException {
         Rate rate;
         // normalRate && reducedRate
@@ -427,13 +425,13 @@ public class FinlayAaronTestTask3
         reducedPeriods.add(reduceP);
         // normalPeriods
         ArrayList<Period> normalPeriods = new ArrayList<Period>();
-        Period normP = new Period(7, 10);
+        Period normP = new Period(7, 8);
         normalPeriods.add(normP);
         // Car Park
         CarParkKind park = CarParkKind.VISITOR;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal("7.00");
-        assertEquals(outputExpected, rate.calculate(new Period(8, 10)));
+        BigDecimal outputExpected = new BigDecimal("0.50");
+        assertEquals(outputExpected, rate.calculate(new Period(9, 10)));
     }
 
     // calculate Test Case #2
@@ -441,8 +439,8 @@ public class FinlayAaronTestTask3
     public void calculateTestTwo() {
         Rate rate;
         // normalRate && reducedRate
-        BigDecimal normalRate = new BigDecimal(12);
-        BigDecimal reducedRate = new BigDecimal(9);
+        BigDecimal normalRate = new BigDecimal(14);
+        BigDecimal reducedRate = new BigDecimal(12);
         // reducedPeriods
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
         Period reduceP = new Period(8, 13);
@@ -454,7 +452,7 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind park = CarParkKind.VISITOR;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal(36);
+        BigDecimal outputExpected = new BigDecimal("8.00");
         assertEquals(outputExpected, rate.calculate(new Period(8, 10)));
     }
 
@@ -477,8 +475,8 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind park = CarParkKind.MANAGEMENT;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal(70);
-        assertNotEquals(outputExpected, rate.calculate(new Period(9, 14)));
+        BigDecimal outputExpected = new BigDecimal("55.00");
+        assertEquals(outputExpected, rate.calculate(new Period(9, 14)));
     }
 
     // calculate Test Case #4
@@ -521,7 +519,7 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind park = CarParkKind.STAFF;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal("15.00");
+        BigDecimal outputExpected = new BigDecimal("10.00");
         assertEquals(outputExpected, rate.calculate(new Period(9, 12)));
     }
 
@@ -530,8 +528,8 @@ public class FinlayAaronTestTask3
     public void calculateTestSix() {
         Rate rate;
         // normalRate && reducedRate
-        BigDecimal normalRate = new BigDecimal(6);
-        BigDecimal reducedRate = new BigDecimal(3);
+        BigDecimal normalRate = new BigDecimal(9);
+        BigDecimal reducedRate = new BigDecimal(6);
         // reducedPeriods
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
         Period reduceP = new Period(15, 19);
@@ -543,7 +541,7 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind park = CarParkKind.STAFF;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal(6);
+        BigDecimal outputExpected = new BigDecimal("6.00");
         assertEquals(outputExpected, rate.calculate(new Period(15, 16)));
     }
 
@@ -552,7 +550,7 @@ public class FinlayAaronTestTask3
     public void calculateTestSeven() {
         Rate rate;
         // normalRate && reducedRate
-        BigDecimal normalRate = new BigDecimal(7);
+        BigDecimal normalRate = new BigDecimal(15.00);
         BigDecimal reducedRate = new BigDecimal(1);
         // reducedPeriods
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
@@ -565,7 +563,7 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind park = CarParkKind.VISITOR;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal("0");
+        BigDecimal outputExpected = new BigDecimal("3.50");
         assertEquals(outputExpected, rate.calculate(new Period(8, 9)));
     }
 
@@ -574,7 +572,7 @@ public class FinlayAaronTestTask3
     public void calculateTestEight() {
         Rate rate;
         // normalRate && reducedRate
-        BigDecimal normalRate = new BigDecimal(10);
+        BigDecimal normalRate = new BigDecimal(2.00);
         BigDecimal reducedRate = new BigDecimal(1);
         // reducedPeriods
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
@@ -587,7 +585,7 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind park = CarParkKind.MANAGEMENT;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal("2");
+        BigDecimal outputExpected = new BigDecimal("3.00");
         assertEquals(outputExpected, rate.calculate(new Period(6, 7)));
     }
 
@@ -597,7 +595,7 @@ public class FinlayAaronTestTask3
     public void calculateTestNine() {
         Rate rate;
         // normalRate && reducedRate
-        BigDecimal normalRate = new BigDecimal(6.50);
+        BigDecimal normalRate = new BigDecimal(8.00);
         BigDecimal reducedRate = new BigDecimal(2);
         // reducedPeriods
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
@@ -608,10 +606,10 @@ public class FinlayAaronTestTask3
         Period np = new Period(6, 12);
         normalPeriods.add(np);
         // Car Park
-        CarParkKind park = CarParkKind.STUDENT;
+        CarParkKind park = CarParkKind.VISITOR;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal(6.50);
-        assertEquals(outputExpected, rate.calculate(new Period(6, 7)));
+        BigDecimal expectedValue = new BigDecimal("0.00");
+        assertEquals(expectedValue, rate.calculate(new Period(6, 7)));
 
     }
 
@@ -620,7 +618,7 @@ public class FinlayAaronTestTask3
     public void calculateTestTen() {
         Rate rate;
         // normalRate && reducedRate
-        BigDecimal normalRate = new BigDecimal(2.45);
+        BigDecimal normalRate = new BigDecimal(2.50);
         BigDecimal reducedRate = new BigDecimal(1);
         // reducedPeriods
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
@@ -633,7 +631,7 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind park = CarParkKind.STUDENT;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal("2.45");
+        BigDecimal outputExpected = new BigDecimal("2.50");
         assertEquals(outputExpected, rate.calculate(new Period(10, 11)));
     }
 
@@ -642,7 +640,7 @@ public class FinlayAaronTestTask3
     public void calculateTestEleven() {
         Rate rate;
         // normalRate && reducedRate
-        BigDecimal normalRate = new BigDecimal(11.5);
+        BigDecimal normalRate = new BigDecimal(16.00);
         BigDecimal reducedRate = new BigDecimal(1);
         // reducedPeriods
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
@@ -653,9 +651,9 @@ public class FinlayAaronTestTask3
         Period normP = new Period(3, 9);
         normalPeriods.add(normP);
         // Car Park
-        CarParkKind park = CarParkKind.STUDENT;
+        CarParkKind park = CarParkKind.STAFF;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal outputExpected = new BigDecimal("6.25");
+        BigDecimal outputExpected = new BigDecimal("16.00");
         assertEquals(outputExpected, rate.calculate(new Period(3, 4)));
     }
 
@@ -677,7 +675,7 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind carPark = CarParkKind.MANAGEMENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal expectedValue = new BigDecimal(-4500);
+        BigDecimal expectedValue = new BigDecimal("72.00");
         assertEquals(expectedValue, rate.calculate(new Period(8, 16)));
     }
 
@@ -700,8 +698,8 @@ public class FinlayAaronTestTask3
         // Car Park
         CarParkKind carPark = CarParkKind.STAFF;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal expectedValue = new BigDecimal(36);
-        assertNotEquals(expectedValue, rate.calculate(new Period(8, 12)));
+        BigDecimal expectedValue = new BigDecimal("9.00");
+        assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
     }
 
 
