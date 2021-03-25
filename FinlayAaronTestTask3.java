@@ -169,7 +169,8 @@ public class FinlayAaronTestTask3
 
     //Rate Class Test Case #8
     @org.junit.Test()
-    public void testCaseEight() throws IllegalArgumentException {
+    public void testCaseEight() throws IllegalArgumentException
+    {
         Rate rate;
         // normalRate && reducedRate
         BigDecimal normalRate = new BigDecimal(3);
@@ -454,7 +455,7 @@ public class FinlayAaronTestTask3
         CarParkKind park = CarParkKind.VISITOR;
         rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
         BigDecimal outputExpected = new BigDecimal(36);
-        assertNotEquals(outputExpected, rate.calculate(new Period(8, 10)));
+        assertEquals(outputExpected, rate.calculate(new Period(8, 10)));
     }
 
 
@@ -771,7 +772,7 @@ public class FinlayAaronTestTask3
     }
 
     //TEST 16 -> Above 5.50 - STUDENT
-    // 5.50 + 4.50 reduced by 25% -> 1/4 (4.50) == 10.00 - 1.125 = 8.875
+    // 5.50 + 4.50 reduced by 25% -> 1/4 (4.50) == 10.00 - 1.12500 = 8.875 => roundingValue => 9
     @org.junit.Test
     public void calculateTestSixteen() throws IllegalArgumentException
     {
@@ -794,9 +795,44 @@ public class FinlayAaronTestTask3
         //Car Park Kind
         CarParkKind carPark = CarParkKind.STUDENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal expectedValue = new BigDecimal(8.875);
+        BigDecimal expectedValue = new BigDecimal("9");
         assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
         //
     }
+    //MANAGEMENT TESTS -MIN PAY == 3.00,
+    // FIRST TEST (17) AT 3.00,
+    // 2nd TEST(18)BELOW 3.00,
+    // 3rd TEST (19) ABOVE 3.00...
+
+    // = 3
+    @org.junit.Test
+    public void calculateTestSeventeen() throws IllegalArgumentException
+    {
+        Rate rate;
+
+        //normalRate + reducedRate instances
+        BigDecimal normalRate = new BigDecimal(3.00);
+        BigDecimal reducedRate = new BigDecimal(2);
+
+        //Normal Periods
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period normPeriod = new Period (8, 15);
+        normalPeriods.add(normPeriod);
+
+        //Reduced Periods
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period reducedP = new Period(16, 18);
+        reducedPeriods.add(reducedP);
+
+        //Car Park Kind
+        CarParkKind carPark = CarParkKind.STUDENT;
+        rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        BigDecimal expectedValue = new BigDecimal("3.00");
+        assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
+
+        //
+    }
+
+
 }
