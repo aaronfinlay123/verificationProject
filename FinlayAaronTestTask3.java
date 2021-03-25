@@ -737,8 +737,8 @@ public class FinlayAaronTestTask3
         //Car Park Kind
         CarParkKind carPark = CarParkKind.STUDENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal expectedValue = new BigDecimal(5.5);
-        Assert.assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
+        BigDecimal expectedValue = new BigDecimal("5.50");
+        assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
     //
     }
@@ -765,8 +765,8 @@ public class FinlayAaronTestTask3
         //Car Park Kind
         CarParkKind carPark = CarParkKind.STUDENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal expectedValue = new BigDecimal(3);
-        assertNotEquals(expectedValue, rate.calculate(new Period(8, 9)));
+        BigDecimal expectedValue = new BigDecimal("3.00");
+        assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
         //
     }
@@ -779,7 +779,7 @@ public class FinlayAaronTestTask3
         Rate rate;
 
         //normalRate + reducedRate instances
-        BigDecimal normalRate = new BigDecimal(10);
+        BigDecimal normalRate = new BigDecimal(9.5);
         BigDecimal reducedRate = new BigDecimal(2);
 
         //Normal Periods
@@ -795,7 +795,7 @@ public class FinlayAaronTestTask3
         //Car Park Kind
         CarParkKind carPark = CarParkKind.STUDENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        BigDecimal expectedValue = new BigDecimal("9");
+        BigDecimal expectedValue = new BigDecimal("6.50");
         assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
         //
@@ -826,9 +826,65 @@ public class FinlayAaronTestTask3
         reducedPeriods.add(reducedP);
 
         //Car Park Kind
-        CarParkKind carPark = CarParkKind.STUDENT;
+        CarParkKind carPark = CarParkKind.MANAGEMENT;
         rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
         BigDecimal expectedValue = new BigDecimal("3.00");
+        assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
+
+        //
+    }
+    // MGMT RATE < 3
+    @org.junit.Test
+    public void calculateTestEighteen() throws IllegalArgumentException
+    {
+        Rate rate;
+
+        //normalRate + reducedRate instances
+        BigDecimal normalRate = new BigDecimal(1.50);
+        BigDecimal reducedRate = new BigDecimal(1);
+
+        //Normal Periods
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period normPeriod = new Period (8, 15);
+        normalPeriods.add(normPeriod);
+
+        //Reduced Periods
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period reducedP = new Period(16, 18);
+        reducedPeriods.add(reducedP);
+
+        //Car Park Kind
+        CarParkKind carPark = CarParkKind.MANAGEMENT;
+        rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        BigDecimal expectedValue = new BigDecimal("3.00");
+        assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
+
+        //
+    }
+    // MGMT RATE > 3
+    @org.junit.Test
+    public void calculateTestNineteen() throws IllegalArgumentException
+    {
+        Rate rate;
+
+        //normalRate + reducedRate instances
+        BigDecimal normalRate = new BigDecimal(14.00);
+        BigDecimal reducedRate = new BigDecimal(7.00);
+
+        //Normal Periods
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period normPeriod = new Period (8, 15);
+        normalPeriods.add(normPeriod);
+
+        //Reduced Periods
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period reducedP = new Period(16, 18);
+        reducedPeriods.add(reducedP);
+
+        //Car Park Kind
+        CarParkKind carPark = CarParkKind.MANAGEMENT;
+        rate = new Rate(carPark, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        BigDecimal expectedValue = new BigDecimal("14.00");
         assertEquals(expectedValue, rate.calculate(new Period(8, 9)));
 
         //
