@@ -9,9 +9,10 @@ class StaffRate implements IReductionRates
         if (cost.compareTo(staffMaxPay) >= 0)
         {
             return staffMaxPay;
-        } else
+        }
+        else
             {
-            return cost;
+                return cost;
             }
     }
 }
